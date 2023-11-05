@@ -1,4 +1,4 @@
-package main
+package fileEntropy
 
 import (
 	"fmt"
@@ -42,7 +42,7 @@ func (f *FileInformation) getCharProbabilities() {
 	}
 }
 
-func (f FileInformation) showProbabilitesNotEqualZero() {
+func (f FileInformation) ShowProbabilitesNotEqualZero() {
 	fmt.Println("Probabilities: " + f.FilePath)
 	for i, probability := range f.CharProbabilities {
 		if probability != 0 {
@@ -62,7 +62,7 @@ func (f *FileInformation) getCharInformationContent() {
 	}
 }
 
-func (f FileInformation) showCharInformationContentNotEqualZero() {
+func (f FileInformation) ShowCharInformationContentNotEqualZero() {
 	fmt.Println("Information content: " + f.FilePath)
 	for i, informationContent := range f.CharInformationContent {
 		if informationContent != 0 {
@@ -80,7 +80,7 @@ func (f *FileInformation) getFileEntropy() {
 	}
 }
 
-func (f FileInformation) showFileInformation() {
+func (f FileInformation) ShowFileInformation() {
 	fmt.Println("File: " + f.FilePath + ": ")
 	fmt.Println("Amount of chars: ", f.AmountChars)
 	entropyString := strconv.FormatFloat(f.Entropy, 'f', 6, 64)
@@ -96,31 +96,9 @@ func (f FileInformation) showFileInformation() {
 	fmt.Println("Entropy: ", f.Entropy)
 }
 
-func (f *FileInformation) getFileInformation() {
+func (f *FileInformation) GetFileInformation() {
 	f.readFile()
 	f.getCharProbabilities()
 	f.getCharInformationContent()
 	f.getFileEntropy()
-}
-
-func main() {
-	// file1 := FileInformation{FilePath: "C:\\repos\\Compression\\src\\text_files\\text1.txt"}
-	// file1.getFileInformation()
-	// file1.showFileInformation()
-
-	// file2 := FileInformation{FilePath: "C:\\repos\\Compression\\src\\text_files\\text2.txt"}
-	// file2.getFileInformation()
-	// file2.showFileInformation()
-
-	// file3 := FileInformation{FilePath: "C:\\repos\\Compression\\src\\text_files\\text3.txt"}
-	// file3.getFileInformation()
-	// file3.showFileInformation()
-
-	// file4 := FileInformation{FilePath: "C:\\repos\\Compression\\src\\text_files\\text4.txt"}
-	// file4.getFileInformation()
-	// file4.showFileInformation()
-
-	file5 := FileInformation{FilePath: "C:\\repos\\Compression\\src\\text_files\\text5.txt"}
-	file5.getFileInformation()
-	file5.showFileInformation()
 }
